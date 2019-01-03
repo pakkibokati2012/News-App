@@ -1,11 +1,11 @@
 import React from 'react';
 import { FlatList, ActivityIndicator, View, Image, Dimensions, TouchableOpacity, Alert } from 'react-native';
-import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body } from 'native-base';
+import { Content, Card, CardItem, Text, Body } from 'native-base';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { userOpenedApp } from './actions';
 
-class MovieList extends React.Component {
+class NewsList extends React.Component {
 
 
   componentDidMount() {
@@ -30,7 +30,6 @@ class MovieList extends React.Component {
     }
 
     return (
-      <View style={{ flex: 1 }}>
         <FlatList
           data={this.props.data.articles}
           renderItem={({ item }) =>
@@ -40,17 +39,12 @@ class MovieList extends React.Component {
           }
           }
           >
-          <Container>
             <Content>
-              <Card style={{ flex: 0 }}>
+              <Card>
                 <CardItem>
                     <Body>
                       <Text>{item.title}</Text>
                       <Text note>{item.publishedAt}</Text>
-                    </Body>
-                </CardItem>
-                <CardItem style={{ overflow: 'hidden' }}>
-                  <Body>
                     <Image source={{ uri: item.urlToImage }} style={{ height: 200, width: Dimensions.get('window').width - 40, flex: 1 }} />
                     <Text>
                       {item.description}
@@ -59,12 +53,10 @@ class MovieList extends React.Component {
                 </CardItem>
               </Card>
             </Content>
-          </Container>
           </TouchableOpacity>
         }
         keyExtractor={(item, index) => index}
         />
-      </View>
     );
   }
 }
@@ -73,4 +65,4 @@ const mapStateToProps = state => {
   return { data: state.data.data, isLoading: state.data.isLoading };
 };
 
-export default connect(mapStateToProps, { userOpenedApp })(MovieList);
+export default connect(mapStateToProps, { userOpenedApp })(NewsList);

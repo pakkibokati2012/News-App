@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Router, Scene } from 'react-native-router-flux';
-import MovieList from './MovieList';
+import NewsList from './NewsList';
 import Detail from './Detail';
 
 
@@ -12,8 +12,8 @@ class Scenes extends Component {
         <Scene key='root'>
 
         <Scene
-          component={MovieList}
-          key='MovieList'
+          component={NewsList}
+          key='NewsList'
           title='News App'
           initial
         />

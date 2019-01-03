@@ -1,3 +1,5 @@
+import { Alert } from 'react-native';
+
 export const userOpenedApp = () => {
   return (dispatch) => {
     fetch('https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=6aa497f7a8e64cbcb78cb6b181ff3cec')
@@ -6,7 +8,8 @@ export const userOpenedApp = () => {
         dispatch({ type: 'user_opened_app', payload: responseJson });
       })
   .catch((error) => {
-        console.error(error);
+        Alert.alert('Internet is not working!');
+        console.log(error);
      });
 };
 };
