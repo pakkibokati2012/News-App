@@ -1,13 +1,13 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import MovieList from './src/MovieList';
-import { store, persistor } from './store';
+import Scenes from './src/Scenes';
+import { store } from './store';
 
 class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <MovieList />
+        <Scenes />
       </Provider>
     );
   }
